@@ -12,12 +12,8 @@ import java.util.Optional;
 
 @Service
 public class AdminService {
-    private final AdminRepository adminRepository;
-
     @Autowired
-    public AdminService(AdminRepository adminRepository) {
-        this.adminRepository = adminRepository;
-    }
+    AdminRepository adminRepository;
 
     public Result createAdmin(AdminDto adminDto) {
         Admin admin = new Admin();

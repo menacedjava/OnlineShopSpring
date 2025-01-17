@@ -27,7 +27,7 @@ public class ProductService {
         productRepository.save(product);
         return product;
     }
-    public Result updateProduct(Integer id, Product productDetails) {
+    public Result updateProduct(Integer id, ProductDto productDetails) {
         return productRepository.findById(id).map(product -> {
             product.setName(productDetails.getName());
             product.setPrice(productDetails.getPrice());
