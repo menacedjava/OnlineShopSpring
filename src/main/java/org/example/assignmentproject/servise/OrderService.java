@@ -21,13 +21,13 @@ public class OrderService {
     public Order findById(Integer id) {
         return orderRepository.findById(id).get();
     }
-    public Order create(OrderDto orderDto) {
+    public Result create(OrderDto orderDto) {
         Order order = new Order();
         order.setCustomerName(orderDto.getCustomerName());
         order.setOrderItems(orderDto.getOrderItems());
         order.setTotalPrice(orderDto.getTotalPrice());
         orderRepository.save(order);
-        return order;
+        return new Result(true,"Saqlandi");
     }
 
     public Result update(Integer id,OrderDto orderDto) {

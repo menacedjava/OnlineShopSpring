@@ -18,17 +18,20 @@ public class CategoryService {
     public List<Category> findAll() {
         return categoryRepository.findAll();
     }
+
     public Optional<Category> findById(Integer id) {
         return categoryRepository.findById(id);
 
     }
-    public Category create(Category category) {
+
+    public Result create(Category category) {
         Category category1 = new Category();
         category1.setName(category.getName());
         category1.setDescription(category.getDescription());
-        return categoryRepository.save(category1);
+        return new Result(true, "Saqlandi");
     }
-    public Result update(Integer id , CategoryDto categoryDto) {
+
+    public Result update(Integer id, CategoryDto categoryDto) {
         if (categoryRepository.findById(id).isPresent()) {
             Category category1 = categoryRepository.findById(id).get();
             category1.setDescription(category1.getDescription());
@@ -40,6 +43,7 @@ public class CategoryService {
 
 
     }
+
     public Result delete(Integer id) {
         if (categoryRepository.findById(id).isPresent()) {
             Category category1 = categoryRepository.findById(id).get();

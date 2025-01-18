@@ -16,12 +16,21 @@ public class UserService {
     private UserRepository userRepository;
 
     // Foydalanuvchini yaratish
-    public User createUser(UserDto user) {
+    public Result createUser(UserDto userDto) {
+
+        User user = new User();
+
+        user.setUsername(userDto.getUsername());
+        user.setPassword(userDto.getPassword());
+        userRepository.save(user);
+        return new Result(true, "Saqlandi");
 
     }
+
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
+
     // Foydalanuvchini ID orqali olish
     public User getUserById(Integer id) {
         return userRepository.findById(id).get();
@@ -44,13 +53,12 @@ public class UserService {
 
     // Foydalanuvchini o'chirish
     public Result deleteUser(Integer id) {
-       if (!userRepository.existsById(id)) {
-           return new Result(false, "User not found");
-       }
-       userRepository.deleteById(id);
-       return new Result(true, "User deleted successfully");
+        if (!userRepository.existsById(id)) {
+            return new Result(false, "User not found");
+        }
+        userRepository.deleteById(id);
+        return new Result(true, "User deleted successfully");
     }
-
 
 
 }

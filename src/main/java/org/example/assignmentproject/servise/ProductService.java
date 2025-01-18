@@ -17,15 +17,17 @@ public class ProductService {
     public List<Product> getAllProducts() {
         return productRepository.findAll();
     }
+
     public Product getProductById(Integer id) {
         return productRepository.findById(id).orElse(null);
     }
-    public Product addProduct(ProductDto productDto) {
+
+    public Result addProduct(ProductDto productDto) {
         Product product = new Product();
         product.setName(productDto.getName());
         product.setPrice(productDto.getPrice());
         productRepository.save(product);
-        return product;
+        return new Result(true , "Saqlandi");
     }
     public Result updateProduct(Integer id, ProductDto productDetails) {
         return productRepository.findById(id).map(product -> {

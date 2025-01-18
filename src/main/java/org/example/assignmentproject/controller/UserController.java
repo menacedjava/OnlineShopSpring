@@ -10,15 +10,16 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-
+@RequestMapping("/users")
 public class UserController {
     @Autowired
     private UserService userService;
 
     // Yangi foydalanuvchi qo‘shish
     @PostMapping
-    public void addUser(@RequestBody UserDto userDto) {
-        userService.createUser(userDto);
+    public Result addUser(@RequestBody UserDto userDto) {
+        Result result = userService.createUser(userDto);
+        return result;
     }
 
     // Barcha foydalanuvchilarni olish

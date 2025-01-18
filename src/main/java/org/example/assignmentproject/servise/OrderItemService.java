@@ -13,25 +13,30 @@ import java.util.List;
 public class OrderItemService {
     @Autowired
     OrderItemRepository orderItemRepository;
+
     public List<OrderItem> findAll() {
         return orderItemRepository.findAll();
     }
+
     public OrderItem getOrderItemById(Integer id) {
         return orderItemRepository.getReferenceById(id);
     }
-    public OrderItem createOrderItem(OrderItemDto orderItemDto) {
+
+    public Result createOrderItem(OrderItemDto orderItemDto) {
         OrderItem orderItem = new OrderItem();
         orderItem.setOrder(orderItem.getOrder());
         orderItem.setQuantity(orderItemDto.getQuantity());
-        return orderItemRepository.save(orderItem);
+        return new Result(true, "Saqlandi");
     }
-    public Result updateOrderItem(Integer id , OrderItemDto orderItemDto) {
+
+    public Result updateOrderItem(Integer id, OrderItemDto orderItemDto) {
         OrderItem orderItem = orderItemRepository.getReferenceById(id);
         orderItem.setOrder(orderItem.getOrder());
         orderItem.setQuantity(orderItemDto.getQuantity());
         orderItemRepository.save(orderItem);
         return new Result();
     }
+
     public Result deleteOrderItem(Integer id) {
         OrderItem orderItem = orderItemRepository.getReferenceById(id);
         orderItemRepository.delete(orderItem);

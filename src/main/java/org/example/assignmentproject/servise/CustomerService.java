@@ -20,11 +20,11 @@ public class CustomerService {
     public Customer getCustomerById(Integer id) {
         return customerRepository.findById(id).get();
     }
-    public Customer addCustomer(CustomerDto customerDto) {
+    public Result addCustomer(CustomerDto customerDto) {
         Customer customer = new Customer();
         customer.setName(customerDto.getName());
         customerRepository.save(customer);
-        return customer;
+        return new Result(true , "Saqlandi");
 
     }
     public Result updateCustomer(Integer id, CustomerDto customerDto) {
