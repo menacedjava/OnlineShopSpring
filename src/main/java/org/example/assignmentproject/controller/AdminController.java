@@ -36,6 +36,11 @@ public class AdminController {
         Result admin = adminService.updateAdmin(id, adminDto);
         return admin;
     }
+    @DeleteMapping("/{id}")
+    public Result deleteAdmin(@PathVariable Integer id) {
+        Result admin = adminService.deleteAdmin(id);
+        return admin;
+    }
 
 
 }
