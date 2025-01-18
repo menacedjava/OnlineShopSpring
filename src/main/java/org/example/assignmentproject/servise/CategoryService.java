@@ -31,11 +31,23 @@ public class CategoryService {
     public Result update(Integer id , CategoryDto categoryDto) {
         if (categoryRepository.findById(id).isPresent()) {
             Category category1 = categoryRepository.findById(id).get();
-            categoryRepository.set
+            category1.setDescription(category1.getDescription());
+            categoryRepository.save(category1);
+            return new Result(true, "Category updated successfully");
 
         }
+        return new Result(false, "Category not found");
 
 
     }
+    public Result delete(Integer id) {
+        if (categoryRepository.findById(id).isPresent()) {
+            Category category1 = categoryRepository.findById(id).get();
+            categoryRepository.delete(category1);
+            return new Result(true, "Category deleted successfully");
+        }
+        return new Result(false, "Category not found");
+    }
+
 
 }
