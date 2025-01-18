@@ -14,6 +14,6 @@ import java.util.List;
 @NoArgsConstructor
 public class OrderDto {
     private String customerName;
-    private List<OrderItem> orderItems;
+    private OrderItem orderItems;
     private double totalPrice;
 }

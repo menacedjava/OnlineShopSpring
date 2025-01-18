@@ -23,7 +23,7 @@ public class AdminService {
         return new Result(true, "Admin created successfully");
     }
 
-    public Result updateAdmin(Long id, AdminDto adminDto) {
+    public Result updateAdmin(Integer id, AdminDto adminDto) {
         Optional<Admin> optionalAdmin = adminRepository.findById(id);
         if (optionalAdmin.isPresent()) {
             Admin admin = optionalAdmin.get();
@@ -35,7 +35,7 @@ public class AdminService {
         return new Result(false, "Admin not found");
     }
 
-    public Result deleteAdmin(Long id) {
+    public Result deleteAdmin(Integer id) {
         Optional<Admin> optionalAdmin = adminRepository.findById(id);
         if (optionalAdmin.isPresent()) {
             adminRepository.delete(optionalAdmin.get());

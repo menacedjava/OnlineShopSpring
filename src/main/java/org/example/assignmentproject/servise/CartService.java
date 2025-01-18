@@ -18,6 +18,9 @@ public class CartService {
     public List<Cart> getCarts() {
         return cartRepository.findAll();
     }
+    public Cart getCartById(Integer id) {
+        return cartRepository.findById(id).get();
+    }
     public Cart addCart(Cart cart) {
         return cartRepository.findById(cart.getId()).get();
     }
@@ -27,11 +30,10 @@ public class CartService {
         cart.setCustomer(cartDto.getCustomer());
         return new Result(true,"OK");
     }
-    public Result updateCart(Integer id,Cart cart) {
+    public Result updateCart(Integer id,CartDto cartDto) {
         if(cartRepository.findById(id).isPresent()) {
             Cart cart1 = cartRepository.findById(id).get();
-            cart1.setCustomer(cart.getCustomer());
-            cart1.setOrderItems(cart.getOrderItems());
+            cart1.setCustomer(cartDto.getCustomer());
             cartRepository.save(cart1);
             return new Result();
 
