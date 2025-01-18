@@ -2,7 +2,7 @@ package org.example.assignmentproject.servise;
 
 import org.example.assignmentproject.dto.CartDto;
 import org.example.assignmentproject.model.Cart;
-import org.example.assignmentproject.model.Order;
+
 import org.example.assignmentproject.model.Result;
 import org.example.assignmentproject.repository.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
