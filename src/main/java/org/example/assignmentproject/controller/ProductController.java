@@ -15,31 +15,26 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
-
     @GetMapping
     public List<Product> getALl() {
         List<Product> productList = productService.getAllProducts();
         return productList;
     }
-
     @GetMapping("/{id}")
     public Product getBYID(@PathVariable Integer id) {
         Product productById = productService.getProductById(id);
         return productById;
     }
-
     @PostMapping
     public Result create(@RequestBody ProductDto productDto) {
         Result result = productService.addProduct(productDto);
         return result;
     }
-
     @PutMapping("/{id}")
     public Result update(@PathVariable Integer id, @RequestBody ProductDto productDto) {
         Result result = productService.updateProduct(id, productDto);
         return result;
     }
-
     @DeleteMapping("/{id}")
     public Result del(@PathVariable Integer id) {
         Result result = productService.deleteProduct(id);
