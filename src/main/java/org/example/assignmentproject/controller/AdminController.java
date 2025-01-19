@@ -27,7 +27,7 @@ public class AdminController {
         return adminById.orElse(null);
     }
     @PostMapping
-    public Result createAdmin(AdminDto adminDto) {
+    public Result createAdmin(@RequestBody AdminDto adminDto) {
         Result admin = adminService.createAdmin(adminDto);
         return admin;
     }

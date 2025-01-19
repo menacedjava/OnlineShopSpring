@@ -24,7 +24,6 @@ public class OrderService {
     public Result create(OrderDto orderDto) {
         Order order = new Order();
         order.setCustomerName(orderDto.getCustomerName());
-        order.setOrderItems(orderDto.getOrderItems());
         order.setTotalPrice(orderDto.getTotalPrice());
         orderRepository.save(order);
         return new Result(true,"Saqlandi");

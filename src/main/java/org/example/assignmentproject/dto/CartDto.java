@@ -8,10 +8,31 @@ import org.example.assignmentproject.model.OrderItem;
 
 import java.util.List;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class CartDto {
     private Customer customer;
     private OrderItem orderItems;
+
+    public CartDto(Customer customer, OrderItem orderItems) {
+        this.customer = customer;
+        this.orderItems = orderItems;
+    }
+
+    public CartDto() {
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public OrderItem getOrderItems() {
+        return orderItems;
+    }
+
+    public void setOrderItems(OrderItem orderItems) {
+        this.orderItems = orderItems;
+    }
 }

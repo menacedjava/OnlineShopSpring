@@ -27,7 +27,7 @@ public class ProductService {
         product.setName(productDto.getName());
         product.setPrice(productDto.getPrice());
         productRepository.save(product);
-        return new Result(true , "Saqlandi");
+        return new Result(true, "Saqlandi");
     }
     public Result updateProduct(Integer id, ProductDto productDetails) {
         return productRepository.findById(id).map(product -> {

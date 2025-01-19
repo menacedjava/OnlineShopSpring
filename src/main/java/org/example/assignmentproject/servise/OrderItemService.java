@@ -24,10 +24,12 @@ public class OrderItemService {
 
     public Result createOrderItem(OrderItemDto orderItemDto) {
         OrderItem orderItem = new OrderItem();
-        orderItem.setOrder(orderItem.getOrder());
+        orderItem.setOrder(orderItemDto.getOrder());
         orderItem.setQuantity(orderItemDto.getQuantity());
-        return new Result(true, "Saqlandi");
+        orderItemRepository.save(orderItem);
+        return new Result(true,"OK");
     }
+
 
     public Result updateOrderItem(Integer id, OrderItemDto orderItemDto) {
         OrderItem orderItem = orderItemRepository.getReferenceById(id);
