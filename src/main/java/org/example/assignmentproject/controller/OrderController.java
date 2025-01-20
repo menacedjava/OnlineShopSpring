@@ -20,21 +20,25 @@ public class OrderController {
         List<Order> orderList = orderService.findAll();
         return orderList;
     }
+
     @GetMapping("/{id}")
     public Order getOrder(@PathVariable Integer id) {
         Order order = orderService.findById(id);
         return order;
     }
+
     @PostMapping
     public Result createOrder(@RequestBody OrderDto orderDto) {
         Result result = orderService.create(orderDto);
         return result;
     }
+
     @PutMapping("/{id}")
     public Result updateOrder(@PathVariable Integer id, @RequestBody OrderDto orderDto) {
         Result result = orderService.update(id, orderDto);
         return result;
     }
+
     @DeleteMapping("/{id}")
     public Result deleteOrder(@PathVariable Integer id) {
         Result result = orderService.delete(id);
